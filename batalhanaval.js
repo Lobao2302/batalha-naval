@@ -58,11 +58,15 @@ function cellClick() {
 function checkForHit(row,col) {
   for(let i=0; i<shipLocations.length; i++) {
     console.log(shipLocations[i]);
-    for( let j=0; j < shipLocations[i].length;j++) {
-      console.log(shipLocations[i][j])
+    for (let j=0; j < shipLocations[i].length; j++) {
+      console.log(shipLocations[i][j]);
       if (shipLocations[i][j][0] == row && shipLocations[i][j][1] == col ) {
         hitTarget++;
-        shipLocations.splice(i,1);
+        shipLocations[i].splice(j,1);
+
+        if(!shipLocations[i].length) {
+          shipLocations.splice(i,1);
+        }
         return true;
       }
     }
